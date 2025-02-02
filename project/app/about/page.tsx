@@ -37,36 +37,41 @@ export default function AboutPage() {
 
   return (
     <div className="container mx-auto py-12">
-      <section className="text-center mb-16">
+      <FadeIn>
+        <section className="text-center mb-16">
         <h1 className="text-4xl font-bold mb-6">Hakkımızda</h1>
         <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
           Gazi Yapay Zeka Topluluğu, yapay zeka teknolojilerine ilgi duyan öğrencileri bir araya getirerek,
           bilgi paylaşımını ve pratik deneyimi teşvik etmeyi amaçlayan bir öğrenci topluluğudur.
           2023 yılında kurulan topluluğumuz, düzenli etkinlikler ve projelerle üyelerine değer katmaya devam etmektedir.
         </p>
-      </section>
-
+        </section>
+      </FadeIn>
+      
       {/* Ekibimiz Bölümü */}
       <section>
-        <h2 className="text-3xl font-bold text-center mb-8">Ekibimiz</h2>
+        <FadeIn>
+          <h2 className="text-3xl font-bold text-center mb-8">Ekibimiz</h2>
+        </FadeIn>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {team.map((member, index) => (
-            <motion.div
-              key={index}
-              className="text-center"
-              whileHover={{ y: -5 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <motion.img
-                whileHover={{ scale: 1.1 }}
+            <FadeIn key={index} delay={index * 0.1}>
+              <motion.div
+                className="text-center"
+                whileHover={{ y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                src={member.image}
-                alt={member.name}
-                className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
-              />
-              <h3 className="font-semibold text-xl">{member.name}</h3>
-              <p className="text-muted-foreground">{member.role}</p>
-            </motion.div>
+              >
+                <motion.img
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  src={member.image}
+                  alt={member.name}
+                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
+                />
+                <h3 className="font-semibold text-xl">{member.name}</h3>
+                <p className="text-muted-foreground">{member.role}</p>
+              </motion.div>
+            </FadeIn>
           ))}
         </div>
       </section>
